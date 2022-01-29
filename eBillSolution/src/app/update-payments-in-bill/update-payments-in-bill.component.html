@@ -1,0 +1,47 @@
+<mat-drawer-container>
+	<mat-drawer mode="side" [opened]="sideBarOpen">
+	  <!-- <mat-drawer mode="side" opened="true"> -->
+	  <app-sidenav></app-sidenav>
+	</mat-drawer>
+	<mat-drawer-content>
+	  <app-dashboard-header (toggleSidebarForMe)="sideBarToggler()"></app-dashboard-header>
+	  <div class="container-fluid page">
+      <div class="d-flex page__box p-3 mt-2">Update Payment Details In Bill</div>
+      <div class="page__content shadow p-3 position-relative">
+<div class="container" >
+        <form novalidate #updateBillForm="ngForm" (ngSubmit)="onSubmit(updateBillForm)" >
+  
+          <mat-dialog-content>
+            <div>
+                <mat-form-field>
+                  <input matInput placeholder="Bill ID" type="number" [(ngModel)]="updateBill.billId" name="billId" #billId="ngModel" required>
+                  <mat-error *ngIf="billId.errors?.['required']">Bill ID is required</mat-error>
+                </mat-form-field>
+              </div>
+            <div>
+              <mat-form-field>
+                <input matInput placeholder="Payment ID" type="number" [(ngModel)]="updateBill.paymentId" name="paymentId" #paymentId="ngModel" required>
+                <mat-error *ngIf="paymentId.errors?.['required']">Payment ID is required</mat-error>
+              </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field appearance="outline">
+                    <mat-label class= "text-muted">Select Status</mat-label>
+                    <mat-select [(ngModel)]="updateBill.paymentStatus" name="paymentStatus">
+                      <mat-option value="DUE">Due</mat-option>
+                      <mat-option value="PAID">Paid</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+            </div>
+          </mat-dialog-content>
+          <mat-dialog-actions>
+            <span class="flex-spacer"></span>
+            <button mat-button routerLink="/admin-profile">Cancel</button>
+            <button type="submit" mat-button class="background-primary text-floral-white" [disabled]="updateBillForm.form.invalid">Update</button>
+          </mat-dialog-actions>
+        </form>
+  </div>
+</div>
+</div>
+</mat-drawer-content>
+</mat-drawer-container>

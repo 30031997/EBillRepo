@@ -1,0 +1,31 @@
+<div class="container" >
+    <form novalidate #updateProfileForm="ngForm" (ngSubmit)="onSubmit(updateProfileForm)" >
+
+      <mat-dialog-content>
+       
+        <div>
+            <mat-form-field>
+              <input matInput placeholder="Email address" type="text" [(ngModel)]="user.email" name="email" #email="ngModel" required>
+              <mat-error *ngIf="email.errors?.['required']">Email address is required</mat-error>
+            </mat-form-field>
+          </div>
+        <div>
+          <mat-form-field>
+            <input matInput placeholder="Name" type="text" [(ngModel)]="user.name" name="name" #name="ngModel" required>
+            <mat-error *ngIf="name.errors?.['required']">Name is required</mat-error>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field>
+            <input matInput placeholder="Contact Number" type="text" [(ngModel)]="user.contanctNo" name="contanctNo" #contanctNo="ngModel" required>
+            <mat-error *ngIf="contanctNo.errors?.['required']">Contact number is required</mat-error>
+          </mat-form-field>
+        </div>
+      </mat-dialog-content>
+      <mat-dialog-actions>
+        <span class="flex-spacer"></span>
+        <button mat-button (click)="onCancel()" >Cancel</button>
+        <button type="submit" mat-button class="background-primary text-floral-white" [disabled]="updateProfileForm.form.invalid">Update</button>
+      </mat-dialog-actions>
+    </form>
+</div>

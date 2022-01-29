@@ -1,0 +1,99 @@
+
+
+<div class="container">
+
+    <div class="row ">
+  
+      
+        <form novalidate #addCustomerForm="ngForm" (ngSubmit)="onSubmit(addCustomerForm)">
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-12 pb-2">
+            <mat-form-field appearance="outline">
+              <mat-label class= "text-muted">Select type</mat-label>
+              <mat-select [(ngModel)]="customer.customerType" name="customerType">
+                <mat-option value="HOUSEHOLD">Household</mat-option>
+                <mat-option value="COMMERCIAL">Commercial</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-12 pb-2">
+            <mat-form-field>
+              <input matInput placeholder="Electricity Board Id" type="number" [(ngModel)]="customer.electricityBoardId" name="electricityBoardId" #electricityBoardId="ngModel" required>
+              <mat-error *ngIf="electricityBoardId.errors?.['required']">Electricity Board Id is required</mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <!-- *********************************** -->
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-12 pb-2">
+            <mat-form-field>
+              <input matInput placeholder="Fullname" type="text" [(ngModel)]="customer.customerName" name="customerName" #customerName="ngModel" required>
+              <mat-error *ngIf="customerName.errors?.['required']">Name is required</mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-12 pb-2">
+            <mat-form-field>
+              <input matInput placeholder="Email" type="email" [(ngModel)]="customer.customerEmail" name="customerEmail" #customerEmail="ngModel" required>
+              <mat-error *ngIf="customerEmail.errors?.['required']">Email is required</mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <!-- *********************************** -->
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-12 pb-2">
+            <mat-form-field>
+              <input matInput placeholder="Contanct No" type="text" [(ngModel)]="customer.customerContanctNo" name="customerContanctNo" #customerContanctNo="ngModel" required>
+              <mat-error *ngIf="customerContanctNo.errors?.['required']">Contanct No is required</mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-12 pb-2">
+            <mat-form-field>
+              <input matInput placeholder="Address" type="text" [(ngModel)]="customer.customerAddress" name="customerAddress" #customerAddress="ngModel" required>
+              <mat-error *ngIf="customerAddress.errors?.['required']">Address is required</mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+  
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-12 pb-2">
+            <mat-form-field appearance="outline">
+              <mat-label >Security Question</mat-label>
+              <mat-select [(ngModel)]="customer.customerQuestion" name="customerQuestion">
+                <mat-option value="What is your nick name?">What is your nick name?</mat-option>
+                <mat-option value="What is your favourite pet?">What is your favourite pet?</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-12 pb-2">
+            <mat-form-field>
+              <input matInput placeholder="Security Answer" type="text" [(ngModel)]="customer.customerAnswer" name="customerAnswer" #customerAnswer="ngModel" required>
+              <mat-error *ngIf="customerAnswer.errors?.['required']">Answer is required</mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-12 pb-2">
+            <mat-form-field>
+              <input matInput placeholder="Password" type="password" [(ngModel)]="customer.password" name="password" #password="ngModel" required>
+              <mat-error *ngIf="password.errors?.['required']">Password is required</mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-12 pb-2">
+            <mat-form-field>
+              <input matInput placeholder="Confirm Password" type="password" [(ngModel)]="customer.confirmPassword" name="confirmPassword" required>
+              <mat-error *ngIf="password.errors?.['required']">Confirm Password is required</mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row response-div">
+          <mat-dialog-actions>
+            <span class="flex-spacer"></span>
+            <button mat-button mat-dialog-close>Cancel</button>
+            <button type="submit" mat-button [mat-dialog-close]="true" class="background-primary text-floral-white" [disabled]="addCustomerForm.form.invalid">Add</button>
+          </mat-dialog-actions>
+        </div>
+      </form>
+      
+    </div>
+  </div>
+  
